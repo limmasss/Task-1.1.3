@@ -18,7 +18,7 @@ public class Util {
         String url = reader.readLine();
         String user = reader.readLine();
         String pass = reader.readLine();
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName(reader.readLine());
         return DriverManager.getConnection(url, user, pass);
     }
 }
