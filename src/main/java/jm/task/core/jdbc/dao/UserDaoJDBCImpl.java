@@ -33,9 +33,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             log.warn("Failed when executing CREATE_TABLE_SCRIPT: " + e.getMessage());
         } catch (IOException e) {
-            log.warn("No file with database connection properties or script file was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
+            log.warn("Failed while loading SQL script:" + e.getMessage());
         }
     }
 
@@ -46,9 +44,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             log.warn("Failed when executing DROP_TABLE_SCRIPT: " + e.getMessage());
         } catch (IOException e) {
-            log.warn("No file with database connection properties or script file was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
+            log.warn("Failed while loading SQL script:" + e.getMessage());
         }
     }
 
@@ -61,10 +57,6 @@ public class UserDaoJDBCImpl implements UserDao {
             saveUserStatement.execute();
         } catch (SQLException e) {
             log.warn("Failed when executing SAVE_USER_SQL: " + e.getMessage());
-        } catch (IOException e) {
-            log.warn("No file with database connection properties was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
         }
     }
 
@@ -75,10 +67,6 @@ public class UserDaoJDBCImpl implements UserDao {
             removeUserStatement.execute();
         } catch (SQLException e) {
             log.warn("Failed when executing REMOVE_USER_SQL: " + e.getMessage());
-        } catch (IOException e) {
-            log.warn("No file with database connection properties was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
         }
     }
 
@@ -94,10 +82,6 @@ public class UserDaoJDBCImpl implements UserDao {
             }
         } catch (SQLException e) {
             log.warn("Failed when executing GET_ALL_USERS_SQL: " + e.getMessage());
-        } catch (IOException e) {
-            log.warn("No file with database connection properties was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
         }
         return users;
     }
@@ -109,9 +93,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             log.warn("Failed when executing CLEAN_TABLE_SCRIPT: " + e.getMessage());
         } catch (IOException e) {
-            log.warn("No file with database connection properties was found!" + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            log.warn("No mysql driver was found!");
+            log.warn("Failed while loading SQL script:" + e.getMessage());
         }
     }
 }
