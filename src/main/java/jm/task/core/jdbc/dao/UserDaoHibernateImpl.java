@@ -38,7 +38,6 @@ public class UserDaoHibernateImpl implements UserDao {
             Transaction transaction = session.beginTransaction();
             session.createSQLQuery(CREATE_TABLE_SQL).executeUpdate();
             transaction.commit();
-            session.flush();
         } finally {
             try {
                 session.close();
@@ -57,7 +56,6 @@ public class UserDaoHibernateImpl implements UserDao {
             Transaction transaction = session.beginTransaction();
             session.createSQLQuery(DROP_TABLE_SQL).executeUpdate();
             transaction.commit();
-            session.flush();
         } finally {
             try {
                 session.close();
@@ -108,7 +106,7 @@ public class UserDaoHibernateImpl implements UserDao {
         List<User> list;
         try {
             session = SESSION_FACTORY.openSession();
-            list = session.createCriteria(User.class).list();
+            list = session.createQuery("from User").list();
         } finally {
             try {
                 session.close();
@@ -127,7 +125,6 @@ public class UserDaoHibernateImpl implements UserDao {
             Transaction transaction = session.beginTransaction();
             session.createSQLQuery(CLEAN_TABLE_SQL).executeUpdate();
             transaction.commit();
-            session.flush();
         } finally {
             try {
                 session.close();
