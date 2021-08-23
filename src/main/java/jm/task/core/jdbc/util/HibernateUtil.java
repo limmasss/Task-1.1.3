@@ -13,12 +13,15 @@ public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    static {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
                 applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    }
+
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }

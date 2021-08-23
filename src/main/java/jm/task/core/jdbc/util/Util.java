@@ -27,7 +27,7 @@ public class Util {
         } catch (FileNotFoundException e) {
             log.warn("File with database connection properties was not found:" + e.getMessage());
         } catch (IOException e) {
-            log.warn("Couldnt read database connection properties:" + e.getMessage());
+            log.warn("Couldn't read database connection properties:" + e.getMessage());
         } catch (ClassNotFoundException e) {
             log.warn("No database connection driver was found" + e.getMessage());
         }
